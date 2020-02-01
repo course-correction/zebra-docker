@@ -1,5 +1,7 @@
 FROM ubuntu:eoan
 
+ARG DEBIAN_FRONTEND="noninteractive"
+
 RUN apt update -qq && apt install --yes -qq \
   wget \
   gnupg2
@@ -25,6 +27,6 @@ RUN apt update -qq && apt install --yes -qq \
 RUN update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-9 10
 RUN update-alternatives --set clang++ "/usr/bin/clang++-9"
 
-RUN update-alternatives --set c++ "/usr/bin/clang++"
+RUN update-alternatives --set c++ "/usr/bin/clang++-9"
 
 CMD bin/bash
