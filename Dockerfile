@@ -14,6 +14,7 @@ RUN apt update -qq && apt install --yes -qq \
     build-essential \
     cmake \
     clang-9 \
+    lld-9 \
     llvm-9 \
     libc++1-9 \
     libc++-9-dev \
@@ -24,9 +25,11 @@ RUN apt update -qq && apt install --yes -qq \
  && apt clean \
  && rm -rf /var/lib/apt/lists/*
 
-RUN update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-9 10
-RUN update-alternatives --set clang++ "/usr/bin/clang++-9"
+RUN update-alternatives --remove-all cc
+RUN update-alternatives --remove-all c++
 
-RUN update-alternatives --set c++ "/usr/bin/clang++-9"
+RUN update-alternatives --install /usr/bin/cc cc /usr/bin/clang-9 100
+RUN update-alternatives --install /usr/bin/c++ c++ /usr/bin/clang++-9 100 \
+        --slave   /usr/bin/ld ld /usr/bin/lld-9
 
 CMD bin/bash
