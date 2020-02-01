@@ -18,7 +18,7 @@ RUN apt update -qq && apt install --yes -qq \
     libc++abi-9-dev \
     qttools5-dev \
     qtbase5-dev \
-    qtbase5-dev-tools
+    qtbase5-dev-tools \
  && apt clean \
  && rm -rf /var/lib/apt/lists/*
 
