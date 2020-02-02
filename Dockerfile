@@ -22,8 +22,12 @@ RUN apt update -qq && apt install --yes -qq \
     qttools5-dev \
     qtbase5-dev \
     qtbase5-dev-tools \
+    python3 \
+    python3-pip \
  && apt clean \
  && rm -rf /var/lib/apt/lists/*
+ 
+RUN pip3 install gcovr
 
 RUN update-alternatives --remove-all cc
 RUN update-alternatives --remove-all c++
