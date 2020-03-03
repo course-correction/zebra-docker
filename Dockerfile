@@ -24,6 +24,7 @@ RUN apt update -qq && apt install --yes -qq \
     qtbase5-dev-tools \
     python3 \
     python3-pip \
+    xvfb \
  && apt clean \
  && rm -rf /var/lib/apt/lists/*
  
