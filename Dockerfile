@@ -26,6 +26,7 @@ RUN apt update -qq && apt install --yes -qq \
     python3-pip \
     xvfb \
     libgl1-mesa-dev \
+    doxygen \
  && apt clean \
  && rm -rf /var/lib/apt/lists/*
  
